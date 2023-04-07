@@ -19,6 +19,15 @@ def get():
     else:
         print(f'Could not fetch website, error code {r.status_code}') 
 
+# function to print the dinner
+def output():
+    print(f'''
+    I declare that your dinner shall be:
+    {fortune[0,0]}!
+
+    You can check out the recipe here: {fortune[0,2]}
+    ''')
+
 allReceitas = {
     'Title': [],
     'Tags': [],
@@ -43,9 +52,4 @@ df = pd.DataFrame(allReceitas)
 
 fortune = df.sample().to_numpy()
 
-print(f'''
-I declare that your dinner shall be:
-{fortune[0,0]}!
-
-You can check out the recipe here: {fortune[0,2]}
-''')
+output()

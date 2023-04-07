@@ -12,12 +12,12 @@ import pandas as pd
 # function for request
 def get():
     r = requests.get("https://based.cooking", timeout=5)
-    try:
+    if r.status_code == 200:
         r.encoding = "UTF-8"
         html = r.text
         return html
-    except requests.exceptions.Timeout as err:
-        print('Request timed out: ', err) 
+    else:
+        print(f'Could not fetch website, error code {r.status_code}') 
 
 allReceitas = {
     'Title': [],
